@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import routes from '../router';  // Certifique-se de que a importação esteja correta
+import routes from './router';  // Certifique-se de que a importação esteja correta
 
 const app = express();
 
