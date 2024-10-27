@@ -10,7 +10,7 @@ interface IProduct{
 
 
 class ShowProductService{
-   public async execute({id}: IProduct): Promise<Product | undefined>{
+   public async execute({id}: IProduct): Promise<Product>{
      const productRepository = getCustomRepository(ProductRepository);
 
      const product = await productRepository.findOne(id);
