@@ -10,7 +10,7 @@ interface IProduct{
   quantity: number;
 }
 
-class UpdateProducService{
+class UpdateProductService{
   public async execute({id, name, price, quantity}: IProduct): Promise<IProduct>{
    const productRepository = getCustomRepository(ProductRepository);
 
@@ -34,4 +34,4 @@ class UpdateProducService{
   }
 }
 
-export default UpdateProducService;
+export default UpdateProductService;
