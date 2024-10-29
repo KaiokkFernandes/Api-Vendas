@@ -16,10 +16,35 @@ productRouter.get('/:id',
   }),
  asyncHandler(productsController.show.bind(productsController)));
 
-productRouter.post('/', asyncHandler(productsController.create.bind(productsController)));
+productRouter.post('/',
+celebrate({
+  [Segments.BODY]: {
+    name: Joi.string().required(),
+    price: Joi.number().precision(2).required(),
+    quantity: Joi.number().required()
+  }
+}),
+asyncHandler(productsController.create.bind(productsController)));
 
-productRouter.put('/:id', asyncHandler(productsController.update.bind(productsController)));
+productRouter.put('/:id',
+celebrate({
+  [Segments.BODY]: {
+    name: Joi.string().required(),
+    price: Joi.number().precision(2).required(),
+    quantity: Joi.number().required()
+  },
+  [Segments.PARAMS]: {
+    id: Joi.string().uuid().required()
+  }
+}),
+asyncHandler(productsController.update.bind(productsController)));
 
-productRouter.delete('/:id', asyncHandler(productsController.delete.bind(productsController)));
+productRouter.delete('/:id',
+celebrate({
+  [Segments.PARAMS]: {
+    id: Joi.string().uuid().required()
+  }
+}),
+asyncHandler(productsController.delete.bind(productsController)));
 
 export default productRouter;
