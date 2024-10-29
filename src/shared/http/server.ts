@@ -4,12 +4,15 @@ import cors from 'cors';
 import routes from './router';
 import AppError from '../erros/AppError';
 import '../typeorm';
+import {errors} from "celebrate"
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use(errors());
+
 
 // Middleware para tratamento de erros
 app.use((error: AppError | Error, request: Request, response: Response, next: NextFunction): void => {
