@@ -13,6 +13,7 @@ app.use(routes);
 
 // Middleware para tratamento de erros
 app.use((error: AppError | Error, request: Request, response: Response, next: NextFunction): void => {
+  console.error('Erro capturado pelo middleware:', error); // Log adicional para depuração
   if (error instanceof AppError) {
     response.status(error.statusCode).json({
       status: 'error',
@@ -25,6 +26,7 @@ app.use((error: AppError | Error, request: Request, response: Response, next: Ne
     });
   }
 });
+
 
 app.listen(3333, () => {
   console.log("Server is running on port 3333! 🚀");

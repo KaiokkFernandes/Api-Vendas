@@ -1,7 +1,8 @@
+import productRouter from '@modules/product/routes/products.router';
 import { Router } from 'express';
 
 const routes = Router();
 
-// Defina suas rotas aqui
+routes.use('/products', productRouter);
 
 export default routes;
