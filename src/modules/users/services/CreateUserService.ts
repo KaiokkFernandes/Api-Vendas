@@ -33,4 +33,4 @@ class CreateUserService {
 }
 
 
-export default create
+export default CreateUserService;
