@@ -3,6 +3,7 @@ import { getCustomRepository } from "typeorm";
 import Users from "../typeorm/entities/Users";
 import { create } from "domain";
 import UserRepository from "../typeorm/repositories/UserRepository";
+import { hash } from "bcryptjs";
 
 interface IRequest{
     name: string;
@@ -19,10 +20,12 @@ class CreateUserService {
       throw new AppError('Email address already used.');
      }
 
+     const hashPassword = await hash(password, 8);
+
      const user = usersRepository.create({
           name,
           email,
-          password,
+          password: hashPassword,
       });
 
       await usersRepository.save(user);
