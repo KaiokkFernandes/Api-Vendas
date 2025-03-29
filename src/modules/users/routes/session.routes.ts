@@ -2,6 +2,7 @@ import { Router } from 'express';
 import asyncHandler from '@config/Middleware';
 import { celebrate, Joi, Segments } from 'celebrate';
 import AuthenticationSessionController from '../controllers/AuthenticationSessionController';
+import isAuthenticated from '../middlewares/isAuthenticated';
 
 
 const sessionsRouter = Router();
@@ -15,7 +16,8 @@ celebrate({
     password: Joi.string().required()
   },
 }),
-asyncHandler(sessionsController.create));
+isAuthenticated,
+asyncHandler(sessionsController.create.bind(sessionsController)));
 
 
 export default sessionsRouter;

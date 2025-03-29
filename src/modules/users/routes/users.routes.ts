@@ -2,6 +2,7 @@ import { Router } from 'express';
 import UsersController from '../controllers/UsersController';
 import asyncHandler from '@config/Middleware';
 import { celebrate, Joi, Segments } from 'celebrate';
+import isAuthenticated from '../middlewares/isAuthenticated';
 const UsersRouter = Router();
 const usersController = new UsersController();
 
@@ -18,6 +19,7 @@ UsersRouter.post('/',
       password: Joi.string().required(),
     }
   }),
+  isAuthenticated,
   asyncHandler(usersController.create));
 
 export default UsersRouter;
