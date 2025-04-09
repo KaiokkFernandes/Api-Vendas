@@ -6,9 +6,9 @@ import isAuthenticated from '../middlewares/isAuthenticated';
 const UsersRouter = Router();
 const usersController = new UsersController();
 
-
+ 
 // Rota para listar todos os usuários
-UsersRouter.get('/', asyncHandler(usersController.index));
+UsersRouter.get('/', isAuthenticated, asyncHandler(usersController.index.bind(usersController)));
 
 // Rota para criar usuarios
 UsersRouter.post('/',
