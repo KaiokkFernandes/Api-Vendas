@@ -2,6 +2,12 @@ import { verify } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import auth from '@config/auth';
 
+interface TokenPayload {
+    iat: number;
+    exp: number;
+    sub: string;
+}
+
 export default function isAuthenticated(req: Request, res: Response, next: NextFunction): void {
     const authHeader = req.headers.authorization;
 
@@ -9,11 +15,21 @@ export default function isAuthenticated(req: Request, res: Response, next: NextF
         throw new Error('JWT token is missing');
     }
 
-    // destruturação to token
+    // destruturação do token
    const [, token] = authHeader.split(' ');
 
    try{
-      const decodeToken = verify(token, auth.jwt.secret);
+      const decodedToken = verify(token, auth.jwt.secret);
+
+      console.log(decodedToken);
+
+      const { sub } = decodedToken as TokenPayload;
+
+
+      req.user = {
+      id: sub,
+
+    }
 
       return next();
    }catch{

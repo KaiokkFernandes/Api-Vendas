@@ -3,8 +3,8 @@ import { getCustomRepository } from "typeorm";
 import Users from "../typeorm/entities/Users";
 import UserRepository from "../typeorm/repositories/UserRepository";
 import { compare, hash } from "bcryptjs";
-import { sign } from "jsonwebtoken";
-import auth from "@config/auth";
+const jwt = require('jsonwebtoken');
+import authConfig from '../../../config/auth';
 
 
 interface IRequest{
@@ -33,15 +33,11 @@ class AuthenticationUserService {
    }
 
 
-   // cria o token JWT assim que o usuario cria uma sessão
-   const token = sign(
-     {},
-     auth.jwt.secret,  // se secret é 'f5b4', deixe como string mesmo
-     {
-       subject: String(user.id),  // ou user.id.toString() se user.id não for string
-       expiresIn: auth.jwt.expiresIn, // '1d'
-     }
-   );
+   const token = jwt.sign(
+    { id: user.id, email: user.email },
+    authConfig.jwt.secret,
+    { expiresIn: authConfig.jwt.expiresIn }
+  );
 
      return {
         user,

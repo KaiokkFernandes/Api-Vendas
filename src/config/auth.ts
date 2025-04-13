@@ -1,6 +1,6 @@
-export default{
+export default {
   jwt: {
-     secret: 'f5b4',
-     expiresIn: '1d'
+    secret: 'f5b4',
+    expiresIn: '1d'
   }
-}
+};
