@@ -6,21 +6,20 @@ import isAuthenticated from '../middlewares/isAuthenticated';
 
 
 
-const sessionsRouter = Router();
+const passwordRoutes = Router();
 const forgotPasswordController = new ForgotPasswordController();
 
 
 // http://localhost:3333/password/forgot
 
 // rota para criar uma sessão
-sessionsRouter.post('/forgot',
+passwordRoutes.post('/forgot',
 celebrate({
   [Segments.BODY]: {
     email: Joi.string().email().required(),
   },
 }),
-isAuthenticated,
 asyncHandler(forgotPasswordController.create));
 
 
-export default sessionsRouter;
+export default passwordRoutes;

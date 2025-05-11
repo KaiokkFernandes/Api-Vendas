@@ -16,7 +16,6 @@ celebrate({
     password: Joi.string().required()
   },
 }),
-isAuthenticated,
 asyncHandler(sessionsController.create.bind(sessionsController)));
 
 
