@@ -29,10 +29,10 @@ class SendForgotPasswordEmailService{
         },
         subject: '[API Vendas] Recuperação de senha',
         templateData:{
-            template: `olá {{name}}: {{token?.token}}`,
+            template: `olá {{name}}: {{token}}`,
             variables:{
               name: user.name,
-              token: token?.token,
+              token : token?.token,
             }
         }
      })
