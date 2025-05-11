@@ -23,10 +23,9 @@ export class handlebarsMailTemplate {
     path.resolve(file),
     { encoding: 'utf-8' }
   );
-    const template = Handlebars.compile(templateContent);
-    const parseTemplate = Handlebars.compile(template);
+   const parseTemplate = Handlebars.compile(templateContent);
 
-    return parseTemplate(variables);
-    }
+   return parseTemplate(variables);
   }
+}
 
