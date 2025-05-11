@@ -24,7 +24,6 @@ UsersRouter.post('/',
       password: Joi.string().required(),
     }
   }),
-  isAuthenticated,
   asyncHandler(usersController.create));
 
 UsersRouter.patch(
