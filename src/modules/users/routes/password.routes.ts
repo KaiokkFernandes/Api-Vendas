@@ -3,11 +3,13 @@ import asyncHandler from '@config/Middleware';
 import { celebrate, Joi, Segments } from 'celebrate';
 import ForgotPasswordController from '../controllers/FotgotPasswordController';
 import isAuthenticated from '../middlewares/isAuthenticated';
+import ResetPasswordController from '../controllers/ResetPasswordController';
 
 
 
 const passwordRoutes = Router();
 const forgotPasswordController = new ForgotPasswordController();
+const resetPasswordController = new ResetPasswordController();
 
 
 // http://localhost:3333/password/forgot
@@ -30,6 +32,6 @@ passwordRoutes.post('/reset',
       password_confirmation: Joi.string().required().valid(Joi.ref('password')),
     },
   }),
-  asyncHandler(forgotPasswordController.create));
+  asyncHandler(resetPasswordController.create));
 
 export default passwordRoutes;
