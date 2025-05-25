@@ -5,15 +5,15 @@ import isAuthenticated from '../middlewares/isAuthenticated';
 import ProfileController from '../controllers/ProfileController';
 
 
-const ProfileRouter = Router();
+const profileRoutes = Router();
 const profileController = new ProfileController();
 
-ProfileRouter.use(isAuthenticated);
+profileRoutes.use(isAuthenticated);
 
-ProfileRouter.get('/', asyncHandler(profileController.show.bind(profileController)));
+profileRoutes.get('/', asyncHandler(profileController.show.bind(profileController)));
 
 // Rota para criar usuarios
-ProfileRouter.post('/',
+profileRoutes.post('/',
   celebrate({
     body: {
       name: Joi.string().required(),
@@ -29,4 +29,4 @@ ProfileRouter.post('/',
   }),
   asyncHandler(profileController.update.bind(profileController)));
 
-export default ProfileRouter;
+export default profileRoutes;
