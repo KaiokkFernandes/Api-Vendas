@@ -14,7 +14,7 @@ class DeleteCostumerService {
     const costumer = await costumerRepostory.findOne(id);
 
     if(!costumer){
-      throw new AppError("Product not found");
+      throw new AppError("Costumer not found");
     }
 
     await costumerRepostory.remove(costumer);
