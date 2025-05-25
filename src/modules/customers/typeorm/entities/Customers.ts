@@ -2,7 +2,7 @@ import { custom } from "joi";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('customers')
-class customers {
+class Customer {
    @PrimaryGeneratedColumn('uuid')
    id: string;
 
@@ -20,4 +20,4 @@ class customers {
 }
 
 
-export default customers;
+export default Customer;
