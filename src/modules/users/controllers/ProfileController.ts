@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import ShowProfileServices from "../services/showPerfil";
 import UpdateProfileServices from "../services/UpdateProfileService";
+import ShowProfileServices from "../services/ShowPerfil";
 
 
 export default class ProfileController {
