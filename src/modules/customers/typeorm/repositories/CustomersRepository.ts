@@ -1,9 +1,8 @@
 import { EntityRepository, Repository } from "typeorm";
-import { custom } from "joi";
 import Customer from "../entities/Customers";
 
 @EntityRepository(Customer)
-class UserRepository extends Repository<Customer>{
+class CustomerRepository extends Repository<Customer>{
     public async findByName(name:string): Promise<Customer | undefined>{
       const customer = await this.findOne({
         where: {
@@ -33,4 +32,4 @@ class UserRepository extends Repository<Customer>{
 }
 
 
-export default UserRepository;
+export default CustomerRepository;
