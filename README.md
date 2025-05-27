@@ -2,7 +2,7 @@
 
 ## Description
 
-**Api-Vendas** is a RESTful API developed in **Node.js** with **TypeScript**. This project is part of my studies in **Clean Architecture**, software design principles, and scalable API development.
+**SellManager API* is a RESTful API developed in **Node.js** with **TypeScript**. This project is part of my studies in **Clean Architecture**, software design principles, and scalable API development.
 
 The goal is to apply concepts like **separation of concerns**, **SOLID principles**, and a clear distinction between **domain, infrastructure, and application layers**.
 
